@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, AlertController} from 'ionic-angular';
 import { Questions } from '../../app/questions';
 import { IntroPage } from '../intro/intro';
-
 /**
- * Generated class for the Level1Page page.
+ * Generated class for the Level5Page page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,10 +11,10 @@ import { IntroPage } from '../intro/intro';
 
 @IonicPage()
 @Component({
-  selector: 'page-level1',
-  templateUrl: 'level1.html',
+  selector: 'page-level5',
+  templateUrl: 'level5.html',
 })
-export class Level1Page {
+export class Level5Page {
 
   header = "Mzansi QUIZ";
   score = 0;
@@ -25,29 +24,30 @@ export class Level1Page {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Level1Page');
+    console.log('ionViewDidLoad Level5Page');
   }
 
-  mzansi = [
-    new Questions("Do you know what Soweto stands for?", ["South Western Townships", "South West Town", "Soggy Western Town", "South African Western Town"], "South Western Townships"),
-    new Questions("This mountain is one of the most popular places for tourists in South Africa. Can you name it?", ["Lion's Head", "Table Mountain", "Devil's Peak", "Champagne Castle"], "Table Mountain"),
-    new Questions("This game park is the largest in South Africa. What is it?", ["Pilanesburg Game Reserve", "Kgalagadi Transfrontier Park", "Kruger National Park", "Madikwe Game Reserve"], "Kruger National Park"),
-    new Questions("Johannesburg's population boomed after what was found there?", ["Uranium", "Cocoa Beans", "Gold", "Oil"], "Gold"),
-    new Questions("How many languages are recognized in South Africa?", ["7", "11", "9", "17"], "11"),
+
+  soccer = [
+    new Questions("Which of the following players is not Brazilian?", ["Philippe Coutinnho", "Eden Hazard", "Gabriel Jesus", "Neymar"], "Eden Hazard"),
+    new Questions("What national team does Mesut Ozil play for?", ["Germany", "South Africa", "Brazil", "England"], "Germany"),
+    new Questions("Which of these players plays or played for Real Madrid?", ["Romelu Lukaku", "Sergio Aguero", "Dani Alves", "Gareth Bale"], "Gareth Bale"),
+    new Questions("Who plays for Argentina?", ["Luis Suarez", "Sergio Aguero", "Robert Lewandowski", "Andres Iniesta"], "Sergio Aguero"),
+    new Questions("Which of these players is a goalkeeper?", ["Sergio Ramos", "Edinson Cavani", "Gianluigi Donnarumma", "Kyriakos Papadopoulos"], "Gianluigi Donnarumma"),
    ];
 
-  ques = this.mzansi[0].question;
-  options = this.mzansi[0].choices;
-  correctAnswer = this.mzansi[0].answer;
+  ques = this.soccer[0].question;
+  options = this.soccer[0].choices;
+  correctAnswer = this.soccer[0].answer;
 
   totalQuestions = 5;
   questionsAnswered = 1; 
 
  choice(i){
    if(this.questionsAnswered == 5){
-    if(this.mzansi[this.ind].choices[i] == this.mzansi[this.ind].answer){
-      console.log(this.mzansi[this.ind].choices[i]);
-      console.log(this.mzansi[this.ind].answer);
+    if(this.soccer[this.ind].choices[i] == this.soccer[this.ind].answer){
+      console.log(this.soccer[this.ind].choices[i]);
+      console.log(this.soccer[this.ind].answer);
       console.log("before "+this.score);
       this.score += 1;
       console.log("after"+this.score);
@@ -78,8 +78,8 @@ export class Level1Page {
                 this.ind = 0;
                 this.score = 0;
                 this.questionsAnswered = 1;
-                this.ques = this.mzansi[this.ind].question;  
-                this.options = this.mzansi[this.ind].choices;
+                this.ques = this.soccer[this.ind].question;  
+                this.options = this.soccer[this.ind].choices;
               }
             }
           ]
@@ -90,13 +90,13 @@ export class Level1Page {
 
    }else
    if(this.questionsAnswered <= 4){
-    if(this.mzansi[this.ind].choices[i] == this.mzansi[this.ind].answer){
+    if(this.soccer[this.ind].choices[i] == this.soccer[this.ind].answer){
       this.score += 1;
     }
     this.ind++;
     this.questionsAnswered++;
-    this.ques = this.mzansi[this.ind].question;  
-    this.options = this.mzansi[this.ind].choices;
+    this.ques = this.soccer[this.ind].question;  
+    this.options = this.soccer[this.ind].choices;
    }
   }
 
@@ -116,6 +116,10 @@ export class Level1Page {
       });
       confirm.present();
     }
-  }
+
 }
+
+
+}
+
 

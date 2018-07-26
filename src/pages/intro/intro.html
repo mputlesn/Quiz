@@ -4,18 +4,18 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>intro</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-  <div>
-    Instructions
+<ion-content padding class="body">
+  <div class="cat">
+    Categories
   </div>
-  <button ion-button full (click)="startQuiz()">Start Quiz</button>
+  <div class="par">
+    <p>Select A Category</p>
+  </div>
+  <div class="buttons">
+    <button ion-button round full (click)="level1()" class="b" >Mzansi Quiz</button>
+    <button ion-button round full (click)="level2()" class="b" >Animal Quiz</button>
+    <button ion-button round full (click)="level3()" class="b" >Geography Quiz</button>
+    <button ion-button round full (click)="level4()" class="b" >Body Quiz</button>
+    <button ion-button round full (click)="level5()" class="b" >Soccer Quiz</button>
+  </div>
 </ion-content>

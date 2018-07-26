@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
 import { Questions } from '../../app/questions';
 import { IntroPage } from '../intro/intro';
 
 /**
- * Generated class for the Level1Page page.
+ * Generated class for the Level3Page page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,42 +12,44 @@ import { IntroPage } from '../intro/intro';
 
 @IonicPage()
 @Component({
-  selector: 'page-level1',
-  templateUrl: 'level1.html',
+  selector: 'page-level3',
+  templateUrl: 'level3.html',
 })
-export class Level1Page {
+export class Level3Page {
 
-  header = "Mzansi QUIZ";
+  header = "Geography Quiz";
   score = 0;
   ind = 0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Level1Page');
+    console.log('ionViewDidLoad Level3Page');
   }
 
-  mzansi = [
-    new Questions("Do you know what Soweto stands for?", ["South Western Townships", "South West Town", "Soggy Western Town", "South African Western Town"], "South Western Townships"),
-    new Questions("This mountain is one of the most popular places for tourists in South Africa. Can you name it?", ["Lion's Head", "Table Mountain", "Devil's Peak", "Champagne Castle"], "Table Mountain"),
-    new Questions("This game park is the largest in South Africa. What is it?", ["Pilanesburg Game Reserve", "Kgalagadi Transfrontier Park", "Kruger National Park", "Madikwe Game Reserve"], "Kruger National Park"),
-    new Questions("Johannesburg's population boomed after what was found there?", ["Uranium", "Cocoa Beans", "Gold", "Oil"], "Gold"),
-    new Questions("How many languages are recognized in South Africa?", ["7", "11", "9", "17"], "11"),
-   ];
+  geography= [
 
-  ques = this.mzansi[0].question;
-  options = this.mzansi[0].choices;
-  correctAnswer = this.mzansi[0].answer;
+    new Questions("Iceland is covered in ice.", ["True", "False"], "False"),
+    new Questions("Which ocean lies on the east coast of the United States?", ["Arctic Ocean", "Pacific Ocean", "Indian Ocean", "Atlantic Ocean"], "Atlantic Ocean"),
+    new Questions("Which is the world's highest mountain?", ["Mount Everest", "Kangchenjunga", "Mount Godwin-Austen", "Makalu"], "Mount Everest"),
+    new Questions("The biggest desert in the world is. . ?", ["Black Rock Desert", "Mojave Desert", "Antarctic Desert", "Sahara"], "Sahara"),
+    new Questions("This specifies a location’s distance north or south of the equator.", ["Logitute", "Latitude"], "Latitude")
+  ] ;
+
+
+  ques = this.geography[0].question;
+  options = this.geography[0].choices;
+  correctAnswer = this.geography[0].answer;
 
   totalQuestions = 5;
   questionsAnswered = 1; 
 
  choice(i){
    if(this.questionsAnswered == 5){
-    if(this.mzansi[this.ind].choices[i] == this.mzansi[this.ind].answer){
-      console.log(this.mzansi[this.ind].choices[i]);
-      console.log(this.mzansi[this.ind].answer);
+    if(this.geography[this.ind].choices[i] == this.geography[this.ind].answer){
+      console.log(this.geography[this.ind].choices[i]);
+      console.log(this.geography[this.ind].answer);
       console.log("before "+this.score);
       this.score += 1;
       console.log("after"+this.score);
@@ -78,8 +80,8 @@ export class Level1Page {
                 this.ind = 0;
                 this.score = 0;
                 this.questionsAnswered = 1;
-                this.ques = this.mzansi[this.ind].question;  
-                this.options = this.mzansi[this.ind].choices;
+                this.ques = this.geography[this.ind].question;  
+                this.options = this.geography[this.ind].choices;
               }
             }
           ]
@@ -90,13 +92,13 @@ export class Level1Page {
 
    }else
    if(this.questionsAnswered <= 4){
-    if(this.mzansi[this.ind].choices[i] == this.mzansi[this.ind].answer){
+    if(this.geography[this.ind].choices[i] == this.geography[this.ind].answer){
       this.score += 1;
     }
     this.ind++;
     this.questionsAnswered++;
-    this.ques = this.mzansi[this.ind].question;  
-    this.options = this.mzansi[this.ind].choices;
+    this.ques = this.geography[this.ind].question;  
+    this.options = this.geography[this.ind].choices;
    }
   }
 
@@ -115,7 +117,9 @@ export class Level1Page {
         ]
       });
       confirm.present();
+    }else{
+
     }
   }
-}
 
+}

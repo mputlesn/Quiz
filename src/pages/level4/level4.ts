@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, AlertController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
 import { Questions } from '../../app/questions';
 import { IntroPage } from '../intro/intro';
 
 /**
- * Generated class for the Level1Page page.
+ * Generated class for the Level4Page page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,42 +12,43 @@ import { IntroPage } from '../intro/intro';
 
 @IonicPage()
 @Component({
-  selector: 'page-level1',
-  templateUrl: 'level1.html',
+  selector: 'page-level4',
+  templateUrl: 'level4.html',
 })
-export class Level1Page {
+export class Level4Page {
 
-  header = "Mzansi QUIZ";
+  header = "Animal QUIZ";
   score = 0;
   ind = 0;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Level1Page');
+    console.log('ionViewDidLoad Level4Page');
   }
 
-  mzansi = [
-    new Questions("Do you know what Soweto stands for?", ["South Western Townships", "South West Town", "Soggy Western Town", "South African Western Town"], "South Western Townships"),
-    new Questions("This mountain is one of the most popular places for tourists in South Africa. Can you name it?", ["Lion's Head", "Table Mountain", "Devil's Peak", "Champagne Castle"], "Table Mountain"),
-    new Questions("This game park is the largest in South Africa. What is it?", ["Pilanesburg Game Reserve", "Kgalagadi Transfrontier Park", "Kruger National Park", "Madikwe Game Reserve"], "Kruger National Park"),
-    new Questions("Johannesburg's population boomed after what was found there?", ["Uranium", "Cocoa Beans", "Gold", "Oil"], "Gold"),
-    new Questions("How many languages are recognized in South Africa?", ["7", "11", "9", "17"], "11"),
-   ];
+  body = [
+    new Questions("Where in the body is the scapular muscle?", ["Head", "Toe", "Finger", "Shoulder"], "Shoulder"),
+    new Questions("What is the name of the only bone in the body not connected to another?", ["Hyoid", "Sphenoid bone ", "Ethmoid bone", "Mandible"], "Hyoid"),
+    new Questions("According to the Red Cross what is the most common Blood Type?", ["Blood Type AB", "Blood Type A", "Blood Type B", "Blood Type O"], "Blood Type O"),
+    new Questions("Where in the body is the thyroid gland found?", ["Neck", "Shoulder", "Leg", "Arm"], "Neck"),
+    new Questions("What is the knee-jerk reflex called?", ["Crossed extensor reflex", "Blushing", "Patella Reflex", "Abdominal reflex"], "Patella Reflex")
+  ] ;
 
-  ques = this.mzansi[0].question;
-  options = this.mzansi[0].choices;
-  correctAnswer = this.mzansi[0].answer;
+
+  ques = this.body[0].question;
+  options = this.body[0].choices;
+  correctAnswer = this.body[0].answer;
 
   totalQuestions = 5;
   questionsAnswered = 1; 
 
  choice(i){
    if(this.questionsAnswered == 5){
-    if(this.mzansi[this.ind].choices[i] == this.mzansi[this.ind].answer){
-      console.log(this.mzansi[this.ind].choices[i]);
-      console.log(this.mzansi[this.ind].answer);
+    if(this.body[this.ind].choices[i] == this.body[this.ind].answer){
+      console.log(this.body[this.ind].choices[i]);
+      console.log(this.body[this.ind].answer);
       console.log("before "+this.score);
       this.score += 1;
       console.log("after"+this.score);
@@ -78,8 +79,8 @@ export class Level1Page {
                 this.ind = 0;
                 this.score = 0;
                 this.questionsAnswered = 1;
-                this.ques = this.mzansi[this.ind].question;  
-                this.options = this.mzansi[this.ind].choices;
+                this.ques = this.body[this.ind].question;  
+                this.options = this.body[this.ind].choices;
               }
             }
           ]
@@ -90,13 +91,13 @@ export class Level1Page {
 
    }else
    if(this.questionsAnswered <= 4){
-    if(this.mzansi[this.ind].choices[i] == this.mzansi[this.ind].answer){
+    if(this.body[this.ind].choices[i] == this.body[this.ind].answer){
       this.score += 1;
     }
     this.ind++;
     this.questionsAnswered++;
-    this.ques = this.mzansi[this.ind].question;  
-    this.options = this.mzansi[this.ind].choices;
+    this.ques = this.body[this.ind].question;  
+    this.options = this.body[this.ind].choices;
    }
   }
 
@@ -117,5 +118,5 @@ export class Level1Page {
       confirm.present();
     }
   }
-}
 
+}

@@ -1,0 +1,28 @@
+<!--
+  Generated template for the Level5Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content padding class="body">
+  <div class="header">
+    {{header}}
+    Score: {{score}}
+  </div>
+<hr>
+<div class="quiz"> 
+    <div class="ques">
+        <h1>{{ques}}</h1>
+    </div>   
+    <div>
+      <ion-list *ngFor="let options of options; let i = index" no-lines>
+          <button ion-button style="font-size: large" round (click)="choice(i)" class="b" full>{{options}}</button>
+      </ion-list>
+    </div>
+    <hr>
+    <footer >
+      <p id="progress">Question {{questionsAnswered}} of {{totalQuestions}}</p>
+    </footer>
+</div>
+
+</ion-content>
